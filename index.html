@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumi Candles — Χειροποίητα Κεράκια Σόγιας</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf6f0;
+    --warm-white: #fff9f2;
+    --sand: #e8ddd0;
+    --taupe: #c4b5a5;
+    --mocha: #8b6f5e;
+    --espresso: #4a3728;
+    --blush: #e8c4b0;
+    --sage: #a8b89a;
+    --gold: #c9a96e;
+    --gold-light: #e8d5b0;
+    --text-dark: #2d1f18;
+    --text-mid: #6b4f42;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text-dark);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 60px;
+    background: rgba(250,246,240,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196,181,165,0.3);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--espresso);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); font-style: italic; }
+  .nav-links {
+    display: flex; gap: 40px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--espresso); }
+  .nav-cta {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 10px 26px;
+    border: 1px solid var(--gold);
+    color: var(--espresso);
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover {
+    background: var(--gold);
+    color: var(--warm-white);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+    position: relative;
+  }
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    top: 15%; right: -30px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 5.5vw, 5.2rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--espresso);
+    margin-bottom: 30px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--mocha);
+  }
+  .hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--text-mid);
+    max-width: 440px;
+    margin-bottom: 50px;
+  }
+  .hero-btns {
+    display: flex; gap: 16px; align-items: center;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 16px 42px;
+    background: var(--espresso);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--mocha); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mocha);
+    text-decoration: none;
+    transition: gap 0.3s;
+  }
+  .btn-secondary:hover { gap: 14px; }
+  .btn-secondary::after { content: '→'; }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    background: var(--sand);
+  }
+  .hero-canvas {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  /* Decorative candle illustrations via CSS */
+  .candle-scene {
+    position: relative;
+    width: 380px; height: 480px;
+  }
+  .jar {
+    position: absolute;
+    border-radius: 4px 4px 8px 8px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(232,221,208,0.5) 100%);
+    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: inset 2px 2px 8px rgba(255,255,255,0.5), 4px 8px 20px rgba(74,55,40,0.15);
+    overflow: hidden;
+  }
+  .jar::after {
+    content: '';
+    position: absolute; top: 0; left: 20%; right: 20%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 60%);
+  }
+  .jar-wax {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    border-radius: 0 0 7px 7px;
+  }
+  .jar-1 { width: 110px; height: 130px; bottom: 60px; left: 30px; }
+  .jar-1 .jar-wax { height: 75%; background: linear-gradient(180deg, #e8d5c0 0%, #d4bfa8 100%); }
+  .jar-2 { width: 130px; height: 160px; bottom: 60px; left: 50%; transform: translateX(-50%); }
+  .jar-2 .jar-wax { height: 82%; background: linear-gradient(180deg, #c8dab8 0%, #a8c498 100%); }
+  .jar-3 { width: 100px; height: 120px; bottom: 60px; right: 30px; }
+  .jar-3 .jar-wax { height: 70%; background: linear-gradient(180deg, #f0c8b8 0%, #e0a898 100%); }
+
+  .flame {
+    position: absolute;
+    top: -18px; left: 50%; transform: translateX(-50%);
+    width: 10px; height: 22px;
+    background: linear-gradient(180deg, #fff3a0 0%, #ffd060 40%, #ff8c30 80%, transparent 100%);
+    border-radius: 50% 50% 35% 35%;
+    animation: flicker 1.8s ease-in-out infinite alternate;
+    filter: blur(0.5px);
+  }
+  .flame::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 50%; transform: translateX(-50%);
+    width: 5px; height: 10px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, #ffe080 100%);
+    border-radius: 50%;
+  }
+  .wick {
+    position: absolute;
+    width: 2px; height: 12px;
+    background: var(--espresso);
+    left: 50%; transform: translateX(-50%);
+    bottom: calc(100% - 8px);
+  }
+
+  .jar-label {
+    position: absolute;
+    bottom: 35%; left: 10%; right: 10%;
+    height: 30%;
+    background: rgba(255,255,255,0.75);
+    border-radius: 2px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.6rem;
+    color: var(--espresso);
+    letter-spacing: 0.1em;
+    z-index: 2;
+  }
+  .jar-label strong { font-size: 0.75rem; font-weight: 600; }
+
+  /* Bouquet candles on top shelf */
+  .shelf {
+    position: absolute;
+    bottom: 45px; left: 0; right: 0;
+    height: 8px;
+    background: linear-gradient(180deg, #c4b5a5 0%, #b0a090 100%);
+    border-radius: 2px;
+    box-shadow: 0 4px 12px rgba(74,55,40,0.2);
+  }
+
+  .bouquet-area {
+    position: absolute;
+    top: 20px; left: 50%; transform: translateX(-50%);
+    width: 200px; height: 200px;
+  }
+  .wax-flower {
+    position: absolute;
+    border-radius: 50% 50% 40% 40%;
+    box-shadow: 2px 3px 8px rgba(74,55,40,0.2);
+  }
+  /* Flowers */
+  .f1 { width: 38px; height: 38px; top: 20px; left: 80px; background: radial-gradient(circle at 30% 30%, #f5e0f0 0%, #e8c0d8 60%, #d4a0c0 100%); }
+  .f2 { width: 32px; height: 32px; top: 50px; left: 50px; background: radial-gradient(circle at 30% 30%, #fff5e0 0%, #fde0b0 60%, #f8c880 100%); }
+  .f3 { width: 42px; height: 42px; top: 10px; left: 110px; background: radial-gradient(circle at 30% 30%, #e0f0e8 0%, #b8ddc8 60%, #90c4a8 100%); }
+  .f4 { width: 28px; height: 28px; top: 60px; left: 130px; background: radial-gradient(circle at 30% 30%, #fce8e0 0%, #f8c8b8 60%, #f0a898 100%); }
+  .f5 { width: 35px; height: 35px; top: 35px; left: 90px; background: radial-gradient(circle at 30% 30%, #f0e8f8 0%, #d8c0f0 60%, #b898e0 100%); }
+  .f6 { width: 24px; height: 24px; top: 75px; left: 70px; background: radial-gradient(circle at 30% 30%, #fff0f0 0%, #ffd0d0 60%, #f8a8a8 100%); }
+  .petal-center {
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 40%; height: 40%;
+    background: rgba(255,220,100,0.8);
+    border-radius: 50%;
+  }
+  .stems {
+    position: absolute;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 60px; height: 100px;
+    background: linear-gradient(180deg, transparent 0%, #8aad7a 40%, #6a9060 100%);
+    clip-path: polygon(30% 0, 70% 0, 80% 100%, 20% 100%);
+  }
+  .wrap {
+    position: absolute;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 80px; height: 50px;
+    background: linear-gradient(135deg, #f8f0e8 0%, #e8ddd0 50%, #d4c8b8 100%);
+    clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
+    border: 1px solid rgba(196,181,165,0.5);
+  }
+  .ribbon {
+    position: absolute;
+    bottom: 8px; left: 50%; transform: translateX(-50%);
+    width: 82px; height: 8px;
+    background: var(--gold);
+    border-radius: 1px;
+  }
+
+  @keyframes flicker {
+    0%   { transform: translateX(-50%) scaleY(1) scaleX(1) rotate(-1deg); opacity: 1; }
+    50%  { transform: translateX(-50%) scaleY(1.08) scaleX(0.92) rotate(1deg); opacity: 0.92; }
+    100% { transform: translateX(-50%) scaleY(0.95) scaleX(1.05) rotate(-0.5deg); opacity: 0.98; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * {
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero-title   { animation-delay: 0.25s; }
+  .hero-desc    { animation-delay: 0.4s; }
+  .hero-btns    { animation-delay: 0.55s; }
+
+  /* ── MARQUEE BAND ── */
+  .marquee-band {
+    background: var(--espresso);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-inner {
+    display: inline-flex; gap: 60px;
+    animation: scroll 18s linear infinite;
+  }
+  .marquee-item {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .marquee-dot { color: var(--gold); }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 100px 80px; }
+  .section-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 300;
+    color: var(--espresso);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .section-sub {
+    font-size: 0.92rem;
+    color: var(--text-mid);
+    line-height: 1.9;
+    max-width: 520px;
+    margin-bottom: 60px;
+  }
+
+  /* ── CATEGORIES ── */
+  .categories {
+    background: var(--warm-white);
+  }
+  .cat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 60px;
+  }
+  .cat-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .cat-card-img {
+    width: 100%; aspect-ratio: 4/3;
+    position: relative;
+    overflow: hidden;
+  }
+  .cat-visual {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .cat-card:hover .cat-visual { transform: scale(1.04); }
+
+  /* Jar category visual */
+  .jars-visual {
+    background: linear-gradient(135deg, #f0ebe4 0%, #e0d5c8 100%);
+    gap: 20px;
+    align-items: flex-end;
+    padding-bottom: 30px;
+  }
+  .mini-jar {
+    border-radius: 4px 4px 8px 8px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(232,221,208,0.55) 100%);
+    border: 1px solid rgba(255,255,255,0.85);
+    box-shadow: inset 1px 1px 4px rgba(255,255,255,0.5), 3px 6px 14px rgba(74,55,40,0.12);
+    position: relative; flex-shrink: 0;
+  }
+  .mini-jar::after {
+    content: ''; position: absolute; top: 0; left: 25%; right: 25%; height: 100%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.35) 0%, transparent 55%);
+  }
+  .mini-wax { position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0 0 7px 7px; }
+  .mj1 { width: 70px; height: 85px; }
+  .mj1 .mini-wax { height: 74%; background: linear-gradient(180deg, #f5c8a0 0%, #e0a878 100%); }
+  .mj2 { width: 85px; height: 105px; }
+  .mj2 .mini-wax { height: 80%; background: linear-gradient(180deg, #b8d8b0 0%, #94c090 100%); }
+  .mj3 { width: 62px; height: 75px; }
+  .mj3 .mini-wax { height: 68%; background: linear-gradient(180deg, #dcc0f0 0%, #c0a0d8 100%); }
+  .mini-flame {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    width: 7px; height: 16px;
+    background: linear-gradient(180deg, #fff3a0 0%, #ffd060 50%, #ff8c30 100%);
+    border-radius: 50% 50% 35% 35%;
+    animation: flicker 2s ease-in-out infinite alternate;
+  }
+
+  /* Melt bouquet visual */
+  .melt-visual {
+    background: linear-gradient(135deg, #ede8f2 0%, #ddd0e8 100%);
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 30px;
+    align-items: center; justify-content: center;
+  }
+  .melt-bouquet {
+    position: relative;
+    width: 120px; height: 160px;
+    animation: float 4s ease-in-out infinite;
+  }
+  .melt-bouquet:nth-child(2) { animation-delay: 0.8s; width: 100px; height: 140px; }
+  .melt-flowers { position: absolute; top: 0; left: 0; right: 0; height: 110px; }
+  .sm-flower {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 1px 2px 5px rgba(74,55,40,0.2);
+  }
+  .sf1 { width: 30px; height: 30px; top: 10px; left: 45px; background: radial-gradient(circle at 35% 35%, #fce8f4 0%, #f0b0d8 100%); }
+  .sf2 { width: 26px; height: 26px; top: 35px; left: 20px; background: radial-gradient(circle at 35% 35%, #fff8e0 0%, #ffd888 100%); }
+  .sf3 { width: 34px; height: 34px; top: 5px; left: 60px; background: radial-gradient(circle at 35% 35%, #e0f8e8 0%, #88d8a8 100%); }
+  .sf4 { width: 22px; height: 22px; top: 45px; left: 65px; background: radial-gradient(circle at 35% 35%, #f0e8ff 0%, #c898f8 100%); }
+  .sf5 { width: 28px; height: 28px; top: 28px; left: 38px; background: radial-gradient(circle at 35% 35%, #fff0e8 0%, #f8a880 100%); }
+  .sm-stem { position: absolute; bottom: 42px; left: 50%; transform: translateX(-50%); width: 40px; height: 70px; background: linear-gradient(180deg, transparent 0%, #90b880 50%, #709060 100%); clip-path: polygon(35% 0, 65% 0, 75% 100%, 25% 100%); }
+  .sm-wrap { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 42px; background: linear-gradient(135deg, #faf5ee 0%, #e8ddd0 100%); clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%); border: 1px solid rgba(196,181,165,0.4); }
+  .sm-ribbon { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); width: 62px; height: 5px; background: var(--gold); }
+
+  .cat-info {
+    padding: 28px 0 8px;
+    border-top: 1px solid var(--sand);
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .cat-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--espresso);
+  }
+  .cat-desc {
+    font-size: 0.82rem;
+    color: var(--text-mid);
+    margin-top: 6px;
+  }
+  .cat-link {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 6px;
+    transition: gap 0.3s;
+    flex-shrink: 0;
+    padding-bottom: 4px;
+  }
+  .cat-link:hover { gap: 12px; }
+
+  /* ── PRODUCTS ── */
+  .products { background: var(--cream); }
+  .filter-tabs {
+    display: flex; gap: 6px; margin-bottom: 50px; flex-wrap: wrap;
+  }
+  .tab {
+    padding: 9px 24px;
+    border: 1px solid var(--sand);
+    background: transparent;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .tab.active, .tab:hover {
+    background: var(--espresso);
+    border-color: var(--espresso);
+    color: var(--cream);
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+  }
+  .product-card {
+    cursor: pointer;
+    position: relative;
+  }
+  .product-img {
+    width: 100%; aspect-ratio: 3/4;
+    background: var(--sand);
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.4s;
+  }
+  .product-card:hover .product-img { background: #ddd0c4; }
+  .product-badge {
+    position: absolute;
+    top: 16px; left: 16px;
+    padding: 5px 12px;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--espresso);
+    color: var(--cream);
+    z-index: 2;
+  }
+  .product-badge.new { background: var(--sage); }
+  .product-badge.sale { background: var(--mocha); }
+  .quick-add {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 14px;
+    background: rgba(74,55,40,0.9);
+    color: var(--cream);
+    text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+    cursor: pointer;
+    border: none; width: 100%;
+    font-family: 'Jost', sans-serif;
+  }
+  .product-card:hover .quick-add { transform: translateY(0); }
+  .product-info { padding: 18px 0 0; }
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--espresso);
+    margin-bottom: 4px;
+  }
+  .product-scent {
+    font-size: 0.78rem;
+    color: var(--taupe);
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+  }
+  .product-price {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    letter-spacing: 0.05em;
+  }
+  .product-price .old {
+    text-decoration: line-through;
+    color: var(--taupe);
+    margin-right: 8px;
+    font-size: 0.8rem;
+  }
+
+  /* Product visual previews */
+  .pv-jar {
+    width: 90px; height: 110px;
+    border-radius: 4px 4px 8px 8px;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: inset 1px 1px 6px rgba(255,255,255,0.5), 3px 6px 16px rgba(74,55,40,0.15);
+    background: linear-gradient(135deg, rgba(255,255,255,0.65) 0%, rgba(232,221,208,0.4) 100%);
+    overflow: hidden;
+  }
+  .pv-jar::after {
+    content: ''; position: absolute; top: 0; left: 25%; right: 25%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.35) 0%, transparent 55%);
+  }
+  .pv-wax { position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0 0 7px 7px; }
+  .pv-flame {
+    position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+    width: 8px; height: 18px;
+    background: linear-gradient(180deg, #fff3a0 0%, #ffd060 50%, #ff8c30 100%);
+    border-radius: 50% 50% 35% 35%;
+    animation: flicker 2.2s ease-in-out infinite alternate;
+  }
+  .pv-label {
+    position: absolute; bottom: 28%; left: 8%; right: 8%;
+    height: 26%; background: rgba(255,255,255,0.7);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.5rem; color: var(--espresso);
+    letter-spacing: 0.08em; z-index: 2; text-align: center;
+  }
+
+  .pv-melt {
+    width: 100px; height: 130px;
+    position: relative;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .pv-flowers {
+    position: relative; width: 100%; height: 85px;
+  }
+  .pv-f { position: absolute; border-radius: 50%; box-shadow: 1px 2px 4px rgba(74,55,40,0.18); }
+  .pv-stem { width: 35px; height: 55px; background: linear-gradient(180deg, transparent 0%, #8cb880 50%, #6a9060 100%); clip-path: polygon(35% 0, 65% 0, 75% 100%, 25% 100%); flex-shrink: 0; }
+  .pv-wrap-small { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 55px; height: 35px; background: linear-gradient(135deg, #faf5ee 0%, #e8ddd0 100%); clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%); }
+  .pv-rib { position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); width: 57px; height: 5px; background: var(--gold); }
+
+  /* ── PROCESS ── */
+  .process {
+    background: var(--espresso);
+    color: var(--cream);
+  }
+  .process .section-eyebrow { color: var(--gold); }
+  .process .section-title { color: var(--cream); }
+  .process .section-sub { color: rgba(250,246,240,0.7); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+  }
+  .step {
+    position: relative;
+    padding-top: 30px;
+  }
+  .step::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+  }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(201,169,110,0.3);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .step-desc {
+    font-size: 0.84rem;
+    line-height: 1.85;
+    color: rgba(250,246,240,0.6);
+  }
+
+  /* ── WHY SOY ── */
+  .why-soy {
+    background: var(--warm-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 100px 80px;
+  }
+  .why-visual {
+    position: relative;
+    height: 500px;
+  }
+  .why-big-jar {
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 200px; height: 260px;
+    border-radius: 8px 8px 16px 16px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.72) 0%, rgba(232,221,208,0.5) 100%);
+    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: inset 3px 3px 12px rgba(255,255,255,0.5), 8px 16px 40px rgba(74,55,40,0.18);
+    overflow: hidden;
+    animation: float 5s ease-in-out infinite;
+  }
+  .why-big-jar::after {
+    content: ''; position: absolute; top: 0; left: 20%; right: 20%; height: 100%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 60%);
+  }
+  .why-wax {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 78%;
+    background: linear-gradient(180deg, #d4c4f0 0%, #b8a0d8 50%, #9880c0 100%);
+    border-radius: 0 0 15px 15px;
+  }
+  .why-flame { position: absolute; top: -24px; left: 50%; transform: translateX(-50%); width: 14px; height: 30px; background: linear-gradient(180deg, #fff3a0 0%, #ffd060 50%, #ff8c30 100%); border-radius: 50% 50% 35% 35%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  .why-label-big {
+    position: absolute; bottom: 30%; left: 10%; right: 10%; height: 25%;
+    background: rgba(255,255,255,0.8); border-radius: 2px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; color: var(--espresso);
+    letter-spacing: 0.1em; z-index: 2;
+  }
+  .why-label-big strong { font-size: 1rem; font-weight: 600; display: block; }
+  .glow-ring {
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 280px; height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(184,160,216,0.15) 0%, transparent 70%);
+    animation: float 5s ease-in-out infinite;
+  }
+  .why-points { display: flex; flex-direction: column; gap: 36px; }
+  .why-point {
+    display: flex; gap: 24px; align-items: flex-start;
+  }
+  .why-icon {
+    width: 48px; height: 48px; flex-shrink: 0;
+    background: var(--cream);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    box-shadow: 0 2px 12px rgba(74,55,40,0.1);
+  }
+  .why-point-text h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400;
+    color: var(--espresso);
+    margin-bottom: 8px;
+  }
+  .why-point-text p {
+    font-size: 0.85rem; line-height: 1.85;
+    color: var(--text-mid);
+  }
+
+  /* ── SCENTS ── */
+  .scents { background: var(--cream); }
+  .scents-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 50px;
+  }
+  .scent-chip {
+    padding: 20px 16px;
+    border: 1px solid var(--sand);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: var(--warm-white);
+  }
+  .scent-chip:hover {
+    background: var(--espresso);
+    border-color: var(--espresso);
+  }
+  .scent-chip:hover .scent-icon,
+  .scent-chip:hover .scent-name { color: var(--cream); }
+  .scent-icon { font-size: 1.8rem; display: block; margin-bottom: 10px; }
+  .scent-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 400;
+    color: var(--espresso);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .scent-note {
+    font-size: 0.72rem;
+    color: var(--taupe);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials {
+    background: linear-gradient(180deg, var(--sand) 0%, var(--cream) 100%);
+    text-align: center;
+  }
+  .testimonials .section-sub { margin-left: auto; margin-right: auto; }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+    text-align: left;
+  }
+  .review-card {
+    background: var(--warm-white);
+    padding: 36px 32px;
+    border: 1px solid var(--sand);
+    position: relative;
+  }
+  .review-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    color: var(--gold-light);
+    line-height: 0.8;
+    margin-bottom: 20px;
+  }
+  .review-text {
+    font-size: 0.88rem;
+    line-height: 1.9;
+    color: var(--text-mid);
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  .review-stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 14px; letter-spacing: 0.1em; }
+  .review-author {
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--espresso);
+  }
+  .review-date { font-size: 0.72rem; color: var(--taupe); }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: var(--espresso);
+    padding: 90px 80px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 60px;
+  }
+  .cta-banner h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+  .cta-banner h2 em { font-style: italic; color: var(--gold); }
+  .cta-banner p {
+    font-size: 0.88rem;
+    color: rgba(250,246,240,0.65);
+    margin-top: 14px;
+    line-height: 1.8;
+  }
+  .cta-form {
+    display: flex; gap: 0;
+  }
+  .cta-input {
+    padding: 16px 24px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(201,169,110,0.4);
+    border-right: none;
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    width: 280px;
+    outline: none;
+  }
+  .cta-input::placeholder { color: rgba(250,246,240,0.4); }
+  .cta-submit {
+    padding: 16px 28px;
+    background: var(--gold);
+    border: none;
+    color: var(--espresso);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s;
+    white-space: nowrap;
+  }
+  .cta-submit:hover { background: var(--gold-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #2d1f18;
+    padding: 70px 80px 40px;
+    color: rgba(250,246,240,0.6);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 18px;
+    display: block;
+  }
+  .footer-brand span { font-style: italic; color: var(--gold); }
+  .footer-about {
+    font-size: 0.83rem;
+    line-height: 1.9;
+    max-width: 300px;
+  }
+  .footer-col h5 {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-col a {
+    font-size: 0.84rem;
+    color: rgba(250,246,240,0.6);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--cream); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(250,246,240,0.1);
+    font-size: 0.75rem;
+  }
+  .social-links { display: flex; gap: 20px; }
+  .social-links a {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(201,169,110,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(250,246,240,0.6);
+    text-decoration: none;
+    font-size: 0.75rem;
+    transition: all 0.3s;
+  }
+  .social-links a:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* Toast notification */
+  .toast {
+    position: fixed; bottom: 30px; right: 30px;
+    padding: 14px 24px;
+    background: var(--espresso);
+    color: var(--cream);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+    z-index: 999;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  @media (max-width: 1024px) {
+    nav { padding: 18px 30px; }
+    section { padding: 70px 30px; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 120px 30px 60px; }
+    .hero-right { height: 400px; }
+    .cat-grid, .products-grid { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 30px; }
+    .why-soy { grid-template-columns: 1fr; padding: 70px 30px; }
+    .scents-grid { grid-template-columns: repeat(3, 1fr); }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .cta-banner { grid-template-columns: 1fr; padding: 60px 30px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .footer-bottom { flex-direction: column; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Lumi <span>Candles</span></a>
+  <ul class="nav-links">
+    <li><a href="#categories">Συλλογές</a></li>
+    <li><a href="#products">Προϊόντα</a></li>
+    <li><a href="#why-soy">Σόγια</a></li>
+    <li><a href="#scents">Αρώματα</a></li>
+  </ul>
+  <a href="#products" class="nav-cta">Αγορά</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-eyebrow">✦ Χειροποίητα Κεράκια Σόγιας</span>
+    <h1 class="hero-title">
+      Φως που<br><em>αναπνέει</em><br>φυσικά
+    </h1>
+    <p class="hero-desc">
+      Κεράκια σόγιας σε βάζα και μελτ-ανθοδέσμες φτιαγμένα με αγνή κηρήθρα σόγιας, βαμβακερές θρυαλλίδες και αρώματα από αιθέρια έλαια. Για κάθε γωνία του σπιτιού σου.
+    </p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-primary">Δες τη Συλλογή</a>
+      <a href="#why-soy" class="btn-secondary">Γιατί Σόγια</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-canvas">
+      <div class="candle-scene">
+        <!-- Bouquet on top -->
+        <div class="bouquet-area">
+          <div class="stems"></div>
+          <div class="wrap"></div>
+          <div class="ribbon"></div>
+          <div class="wax-flower f1"><div class="petal-center"></div></div>
+          <div class="wax-flower f2"><div class="petal-center"></div></div>
+          <div class="wax-flower f3"><div class="petal-center"></div></div>
+          <div class="wax-flower f4"><div class="petal-center"></div></div>
+          <div class="wax-flower f5"><div class="petal-center"></div></div>
+          <div class="wax-flower f6"><div class="petal-center"></div></div>
+        </div>
+        <!-- Jars -->
+        <div class="jar jar-1">
+          <div class="jar-wax"></div>
+          <div class="wick"></div>
+          <div class="flame"></div>
+          <div class="jar-label"><strong>Βανίλια</strong>& Ξύλο</div>
+        </div>
+        <div class="jar jar-2">
+          <div class="jar-wax"></div>
+          <div class="wick"></div>
+          <div class="flame"></div>
+          <div class="jar-label"><strong>Λεβάντα</strong>& Μέντα</div>
+        </div>
+        <div class="jar jar-3">
+          <div class="jar-wax"></div>
+          <div class="wick"></div>
+          <div class="flame"></div>
+          <div class="jar-label"><strong>Τριαντ.</strong></div>
+        </div>
+        <div class="shelf"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-band">
+  <div class="marquee-inner">
+    <span class="marquee-item">100% Κηρήθρα Σόγιας</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Αιθέρια Έλαια</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Βαμβακερή Θρυαλλίδα</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Φιλικό προς το Περιβάλλον</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Χειροποίητο</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Made with Love in Greece</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Vegan Friendly</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Χωρίς Παραφίνη</span><span class="marquee-dot">✦</span>
+    <!-- repeat for seamless loop -->
+    <span class="marquee-item">100% Κηρήθρα Σόγιας</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Αιθέρια Έλαια</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Βαμβακερή Θρυαλλίδα</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Φιλικό προς το Περιβάλλον</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Χειροποίητο</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Made with Love in Greece</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Vegan Friendly</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Χωρίς Παραφίνη</span><span class="marquee-dot">✦</span>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <span class="section-eyebrow">✦ Οι Συλλογές μας</span>
+  <h2 class="section-title">Δύο κόσμοι,<br>ένα άρωμα</h2>
+  <p class="section-sub">Διάλεξε ανάμεσα στα κλασικά κεράκια σε βάζα που γεμίζουν ζεστασιά κάθε χώρο, ή τις μοναδικές ανθοδέσμες μελτ για δωράκι που δε ξεχνιέται.</p>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <div class="cat-card-img">
+        <div class="cat-visual jars-visual">
+          <div class="mini-jar mj1">
+            <div class="mini-wax"></div>
+            <div class="mini-flame"></div>
+          </div>
+          <div class="mini-jar mj2">
+            <div class="mini-wax"></div>
+            <div class="mini-flame"></div>
+          </div>
+          <div class="mini-jar mj3">
+            <div class="mini-wax"></div>
+            <div class="mini-flame"></div>
+          </div>
+        </div>
+      </div>
+      <div class="cat-info">
+        <div>
+          <div class="cat-name">Κεράκια σε Βάζα</div>
+          <div class="cat-desc">Από 180gr — Διάρκεια έως 50 ώρες</div>
+        </div>
+        <a href="#products" class="cat-link">Δες όλα →</a>
+      </div>
+    </div>
+    <div class="cat-card">
+      <div class="cat-card-img">
+        <div class="cat-visual melt-visual">
+          <div class="melt-bouquet">
+            <div class="melt-flowers">
+              <div class="sm-flower sf1"><div class="petal-center"></div></div>
+              <div class="sm-flower sf2"><div class="petal-center"></div></div>
+              <div class="sm-flower sf3"><div class="petal-center"></div></div>
+              <div class="sm-flower sf4"><div class="petal-center"></div></div>
+              <div class="sm-flower sf5"><div class="petal-center"></div></div>
+            </div>
+            <div class="sm-stem"></div>
+            <div class="sm-wrap"></div>
+            <div class="sm-ribbon"></div>
+          </div>
+          <div class="melt-bouquet">
+            <div class="melt-flowers">
+              <div class="sm-flower" style="width:26px;height:26px;top:18px;left:38px;background:radial-gradient(circle at 35% 35%,#ffe0f0 0%,#ff90c8 100%)"><div class="petal-center"></div></div>
+              <div class="sm-flower" style="width:30px;height:30px;top:8px;left:55px;background:radial-gradient(circle at 35% 35%,#e8f8ff 0%,#88d0f8 100%)"><div class="petal-center"></div></div>
+              <div class="sm-flower" style="width:22px;height:22px;top:38px;left:25px;background:radial-gradient(circle at 35% 35%,#fff0e0 0%,#f8c080 100%)"><div class="petal-center"></div></div>
+              <div class="sm-flower" style="width:28px;height:28px;top:30px;left:58px;background:radial-gradient(circle at 35% 35%,#f0ffe8 0%,#a0e888 100%)"><div class="petal-center"></div></div>
+            </div>
+            <div class="sm-stem"></div>
+            <div class="sm-wrap"></div>
+            <div class="sm-ribbon"></div>
+          </div>
+        </div>
+      </div>
+      <div class="cat-info">
+        <div>
+          <div class="cat-name">Μελτ Ανθοδέσμες</div>
+          <div class="cat-desc">Ιδανικό δώρο — Χωρίς θρυαλλίδα</div>
+        </div>
+        <a href="#products" class="cat-link">Δες όλα →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <span class="section-eyebrow">✦ Προϊόντα</span>
+  <h2 class="section-title">Η πλήρης<br>συλλογή</h2>
+  <div class="filter-tabs">
+    <button class="tab active" onclick="filterProducts('all', this)">Όλα</button>
+    <button class="tab" onclick="filterProducts('jar', this)">Κεράκια Βάζα</button>
+    <button class="tab" onclick="filterProducts('melt', this)">Μελτ Ανθοδέσμες</button>
+    <button class="tab" onclick="filterProducts('gift', this)">Gift Sets</button>
+  </div>
+  <div class="products-grid" id="productsGrid">
+
+    <!-- JAR products -->
+    <div class="product-card" data-type="jar">
+      <div class="product-img">
+        <span class="product-badge new">Νέο</span>
+        <div class="pv-jar" style="background:linear-gradient(135deg,rgba(255,255,255,.7) 0%,rgba(220,210,240,.4) 100%)">
+          <div class="pv-wax" style="height:78%;background:linear-gradient(180deg,#c8b8e8 0%,#a898d0 100%);position:absolute;bottom:0;left:0;right:0;border-radius:0 0 7px 7px"></div>
+          <div class="pv-flame"></div>
+          <div class="pv-label">Λεβάντα<br>& Bergamot</div>
+        </div>
+        <button class="quick-add" onclick="addToCart('Κεράκι Λεβάντα & Bergamot')">+ Προσθήκη</button>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Λεβάντα & Bergamot</div>
+        <div class="product-scent">Floral · Φρέσκο · Χαλαρωτικό</div>
+        <div class="product-price">12,90 €</div>
+      </div>
+    </div>
+
+    <div class="product-card" data-type="jar">
+      <div class="product-img">
+        <div class="pv-jar" style="background:linear-gradient(135deg,rgba(255,255,255,.7) 0%,rgba(240,220,190,.4) 100%)">
+          <div class="pv-wax" style="height:80%;background:linear-gradient(180deg,#e8c898 0%,#c8a878 100%);position:absolute;bottom:0;left:0;right:0;border-radius:0 0 7px 7px"></div>
+          <div class="pv-flame"></div>
+          <div class="pv-label">Βανίλια<br>& Σανδαλόξυλο</div>
+        </div>
+        <button class="quick-add" onclick="addToCart('Κεράκι Βανίλια & Σανδαλόξυλο')">+ Προσθήκη</button>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Βανίλια & Σανδαλόξυλο</div>
+        <div class="product-scent">Γλυκό · Ζεστό · Aphrodite vibes</div>
+        <div class="product-price">12,90 €</div>
+      </div>
+    </div>
+
+    <div class="product-card" data-type="jar">
+      <div class="product-img">
+        <span class="product-badge sale">−20%</span>
+        <div class="pv-jar" style="background:linear-gradient(135deg,rgba(255,255,255,.7) 0%,rgba(200,230,210,.4) 100%)">
+          <div class="pv-wax" style="height:75%;background:linear-gradient(180deg,#a8d8b8 0%,#80b898 100%);position:absolute;bottom:0;left:0;right:0;border-radius:0 0 7px 7px"></div>
+          <div class="pv-flame"></div>
+          <div class="pv-label">Ευκάλυπτος<br>& Δυόσμος</div>
+        </div>
+        <button class="quick-add" onclick="addToCart('Κεράκι Ευκάλυπτος & Δυόσμος')">+ Προσθήκη</button>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Ευκάλυπτος & Δυόσμος</div>
+        <div class="product-scent">Φρέσκο · Τονωτικό · Spa feeling</div>
+        <div class="product-price"><span class="old">14,90 €</span> 11,90 €</div>
+      </div>
+    </div>
+
+    <!-- MELT products -->
+    <div class="product-card" data-type="melt">
+      <div class="product-img">
+        <span class="product-badge new">Νέο</span>
+        <div class="pv-melt">
+          <div class="pv-flowers" style="position:relative;width:100%;height:85px">
+            <div class="pv-f" style="width:28px;height:28px;top:12px;left:38px;background:radial-gradient(circle at 35% 35%,#fce8f8 0%,#f0b8e8 100%)"><div class="petal-center"></div></div>
+            <div class="pv-f" style="width:24px;height:24px;top:35px;left:20px;background:radial-gradient(circle at 35% 35%,#fff8e0 0%,#ffd888 100%)"><div class="petal-center"></div></div>
+            <div class="pv-f" style="width:32px;height:32px;top:8px;left:55px;background:radial-gradient(circle at 35% 35%,#e0f8f0 0%,#88d8c0 100%)"><div class="petal-center"></div></div>
+            <div class="pv-f" style="width:22px;height:22px;top:42px;left:60px;background:radial-gradient(circle at 35% 35%,#f0e8ff 0%,#c8a8f8 100%)"><div class="petal-center"></div></div>
+            <div class="pv-f" style="width:26px;height:26px;top:28px;left:40px;background:radial-gradient(circle at 35% 35%,#fff0e8 0%,#f8c090 100%)"><div class="petal-center"></div></div>
+          </div>
+          <div class="pv-stem" style="width:35px;height:55px;background:linear-gradient(180deg,transparent 0%,#8cb880 50%,#6a9060 100%);clip-path:polygon(35% 0,65% 0,75% 100%,25% 100%);flex-shrink:0"></div>
+          <div style="position:relative;width:100%;height:35px">
+            <div class="pv-wrap-small"></div>
+            <div class="pv-rib"></div>
+          </div>
+        </div>
+        <button class="quick-add" onclick="addToCart('Μελτ Ανθοδέσμη Παιώνια')">+ Προσθήκη</button>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Ανθοδέσμη Παιώνιας</div>
+        <div class="product-scent">Floral · Ρομαντικό · Για δώρο</div>
+        <div class="product-price">18,50 €</div>
+      </div>
+    </div>
+
+    <div class="product-card" data-type="melt">
+      <div class="product-img">
+        <div class="pv-melt">
+          <div class="pv-flowers" style="position:relative;width:100%;height:85px">
+            <div class="pv-f" style="width:30px;height:30px;top:10px;left:35px;background:radial-gradient(circle at 35% 35%,#ffe0e8 0%,#ff9ab8 100%)"><div class="petal-center"></div></div>
+            <div class="pv-f" style="width:26px;height:26px;top:36px;left:18px;background:radial-gradient(circle at 35% 35%,#fff0f8 0%,#ffb0d8 100%)"><div class="petal-center"></div></div>
+            <div class="pv-f" style="width:28px;height:28px;top:6px;left:58px;background:radial-gradient(circle at 35% 35%,#ffe8f0 0%,#ff80b0 100%)"><div class="petal-center"></div></div>
+            <div class="pv-f" style="width:22px;height:22px;top:40px;left:58px;background:radial-gradient(circle at 35% 35%,#fff8f0 0%,#ffcca0 100%)"><div class="petal-center"></div></div>
+          </div>
+          <div class="pv-stem" style="width:35px;height:55px;background:linear-gradient(180deg,transparent 0%,#8cb880 50%,#6a9060 100%);clip-path:polygon(35% 0,65% 0,75% 100%,25% 100%);flex-shrink:0"></div>
+          <div style="position:relative;width:100%;height:35px">
+            <div class="pv-wrap-small"></div>
+            <div class="pv-rib" style="background:#c8a0d0"></div>
+          </div>
+        </div>
+        <button class="quick-add" onclick="addToCart('Μελτ Ανθοδέσμη Τριαντάφυλλο')">+ Προσθήκη</button>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Ανθοδέσμη Τριαντάφυλλου</div>
+        <div class="product-scent">Floral · Κλασικό · Luxury</div>
+        <div class="product-price">19,90 €</div>
+      </div>
+    </div>
+
+    <div class="product-card" data-type="gift">
+      <div class="product-img">
+        <span class="product-badge">Gift</span>
+        <div style="display:flex;gap:12px;align-items:flex-end;padding-bottom:20px">
+          <div class="pv-jar" style="width:70px;height:90px;background:linear-gradient(135deg,rgba(255,255,255,.7) 0%,rgba(230,220,250,.4) 100%)">
+            <div style="height:76%;background:linear-gradient(180deg,#c0b0e8 0%,#a090c8 100%);position:absolute;bottom:0;left:0;right:0;border-radius:0 0 7px 7px"></div>
+            <div class="pv-flame"></div>
+          </div>
+          <div class="pv-melt" style="width:80px;height:110px">
+            <div class="pv-flowers" style="position:relative;width:100%;height:68px">
+              <div class="pv-f" style="width:24px;height:24px;top:8px;left:28px;background:radial-gradient(circle at 35% 35%,#e8f8ff 0%,#88d0f8 100%)"><div class="petal-center"></div></div>
+              <div class="pv-f" style="width:28px;height:28px;top:4px;left:44px;background:radial-gradient(circle at 35% 35%,#fff8e0 0%,#ffc860 100%)"><div class="petal-center"></div></div>
+              <div class="pv-f" style="width:22px;height:22px;top:28px;left:35px;background:radial-gradient(circle at 35% 35%,#fce8f8 0%,#f098d8 100%)"><div class="petal-center"></div></div>
+            </div>
+            <div class="pv-stem" style="width:28px;height:44px;background:linear-gradient(180deg,transparent 0%,#8cb880 50%,#6a9060 100%);clip-path:polygon(35% 0,65% 0,75% 100%,25% 100%);flex-shrink:0"></div>
+            <div style="position:relative;width:100%;height:28px"><div class="pv-wrap-small" style="width:45px;height:28px"></div><div class="pv-rib" style="width:47px;height:4px;bottom:4px"></div></div>
+          </div>
+        </div>
+        <button class="quick-add" onclick="addToCart('Gift Set Duo')">+ Προσθήκη</button>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Gift Set Duo</div>
+        <div class="product-scent">Βάζο + Ανθοδέσμη · Σε κουτί δώρου</div>
+        <div class="product-price">28,00 €</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <span class="section-eyebrow">✦ Η Διαδικασία</span>
+  <h2 class="section-title" style="color:var(--cream)">Από τον καρπό<br>ως τη φλόγα</h2>
+  <p class="section-sub">Κάθε κεράκι φτιάχνεται με προσοχή, αγάπη και επιλεγμένα υλικά. Μηδενική χρήση παραφίνης, μηδενικά τεχνητά αρώματα.</p>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Αγνή Κηρήθρα</div>
+      <p class="step-desc">Χρησιμοποιούμε μόνο 100% φυτική κηρήθρα σόγιας — καθαρή, ανανεώσιμη και vegan. Χωρίς παραφίνη, χωρίς τοξίνες.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Αιθέρια Έλαια</div>
+      <p class="step-desc">Τα αρώματα προέρχονται αποκλειστικά από αιθέρια έλαια. Όχι αρωματικοί αναθυμιάσεις — μόνο αλήθεια.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Χειροποίητη Διαδικασία</div>
+      <p class="step-desc">Κάθε βάζο γεμίζεται, κάθε λουλούδι τοποθετείται και κάθε ανθοδέσμη τυλίγεται στο χέρι, με μεράκι.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">Συσκευασία & Αγάπη</div>
+      <p class="step-desc">Φιλική προς το περιβάλλον συσκευασία, έτοιμη να γίνει δώρο ή να στολίσει το σπίτι σου αμέσως.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SOY -->
+<section class="why-soy" id="why-soy">
+  <div class="why-visual">
+    <div class="glow-ring"></div>
+    <div class="why-big-jar">
+      <div class="why-wax"></div>
+      <div class="why-flame"></div>
+      <div class="why-label-big">
+        <strong>Λεβάντα</strong>
+        & Βανίλια
+      </div>
+    </div>
+  </div>
+  <div>
+    <span class="section-eyebrow">✦ Γιατί Σόγια;</span>
+    <h2 class="section-title">Καλύτερο για σένα,<br>για το σπίτι σου,<br><em>για τον πλανήτη</em></h2>
+    <div class="why-points">
+      <div class="why-point">
+        <div class="why-icon">🌱</div>
+        <div class="why-point-text">
+          <h4>100% Φυτικής Προέλευσης</h4>
+          <p>Η κηρήθρα σόγιας είναι φυτικής προέλευσης, βιοδιασπάσιμη και παράγεται από ανανεώσιμες πηγές. Μακριά από ζωικά προϊόντα ή παράγωγα πετρελαίου.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-icon">🕯️</div>
+        <div class="why-point-text">
+          <h4>Πιο Καθαρή Καύση</h4>
+          <p>Η σόγια καίγεται αργότερα και πιο καθαρά — λιγότερος καπνός, λιγότερη αιθάλη. Τέλεια για κλειστούς χώρους και για όσους έχουν αλλεργίες.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-icon">⏱️</div>
+        <div class="why-point-text">
+          <h4>Μεγαλύτερη Διάρκεια</h4>
+          <p>Τα κεράκια σόγιας καίγονται κατά μέσο όρο 30–50% περισσότερο από κεράκια παραφίνης ίδιου μεγέθους. Περισσότερη αξία, περισσότερο άρωμα.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-icon">♻️</div>
+        <div class="why-point-text">
+          <h4>Εύκολος Καθαρισμός</h4>
+          <p>Η κηρήθρα σόγιας λιώνει με ζεστό νερό και σαπούνι. Μπορείς να ξαναχρησιμοποιήσεις το βάζο σου — μηδενικά απόβλητα!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENTS -->
+<section class="scents" id="scents">
+  <span class="section-eyebrow">✦ Αρώματα</span>
+  <h2 class="section-title">Βρες το δικό<br>σου άρωμα</h2>
+  <p class="section-sub">Όλα τα αρώματά μας είναι διαθέσιμα τόσο σε κεράκια βάζα όσο και σε μελτ ανθοδέσμες.</p>
+  <div class="scents-grid">
+    <div class="scent-chip">
+      <span class="scent-icon">💜</span>
+      <span class="scent-name">Λεβάντα</span>
+      <span class="scent-note">Χαλαρωτικό · Floral</span>
+    </div>
+    <div class="scent-chip">
+      <span class="scent-icon">🌹</span>
+      <span class="scent-name">Τριαντάφυλλο</span>
+      <span class="scent-note">Ρομαντικό · Κλασικό</span>
+    </div>
+    <div class="scent-chip">
+      <span class="scent-icon">🍦</span>
+      <span class="scent-name">Βανίλια</span>
+      <span class="scent-note">Γλυκό · Ζεστό</span>
+    </div>
+    <div class="scent-chip">
+      <span class="scent-icon">🌿</span>
+      <span class="scent-name">Ευκάλυπτος</span>
+      <span class="scent-note">Φρέσκο · Τονωτικό</span>
+    </div>
+    <div class="scent-chip">
+      <span class="scent-icon">🍊</span>
+      <span class="scent-name">Bergamot</span>
+      <span class="scent-note">Citrus · Ανάλαφρο</span>
+    </div>
+    <div class="scent-chip">
+      <span class="scent-icon">🌸</span>
+      <span class="scent-name">Παιώνια</span>
+      <span class="scent-note">Floral · Εαρινό</span>
+    </div>
+    <div class="scent-chip">
+      <span class="scent-icon">🪵</span>
+      <span class="scent-name">Σανδαλόξυλο</span>
+      <span class="scent-note">Woody · Earthy</span>
+    </div>
+    <div class="scent-chip">
+      <span class="scent-icon">🍋</span>
+      <span class="scent-name">Λεμόνι</span>
+      <span class="scent-note">Φρέσκο · Δροσερό</span>
+    </div>
+    <div class="scent-chip">
+      <span class="scent-icon">☕</span>
+      <span class="scent-name">Άμβρας & Κέδρος</span>
+      <span class="scent-note">Γήινο · Χειμωνιάτικο</span>
+    </div>
+    <div class="scent-chip">
+      <span class="scent-icon">🌺</span>
+      <span class="scent-name">Ylang Ylang</span>
+      <span class="scent-note">Exotic · Sensual</span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <span class="section-eyebrow">✦ Τι λένε οι πελάτισσές μας</span>
+  <h2 class="section-title">Αγαπημένα<br>από ❤️</h2>
+  <p class="section-sub">Πάνω από 500 ευτυχισμένοι πελάτες εμπιστεύονται τα Lumi Candles.</p>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Αγόρασα δύο ανθοδέσμες μελτ για δώρα και η αντίδρασή των φίλων μου ήταν απίστευτη. Δεν πίστευαν ότι ήταν κεράκια! Εντυπωσιακά στην εμφάνιση και θαυμάσια στη μυρωδιά.</p>
+      <div class="review-author">Μαρία Π.</div>
+      <div class="review-date">Φεβρουάριος 2025</div>
+    </div>
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Το κεράκι λεβάντα σε βάζο είναι το αγαπημένο μου για το υπνοδωμάτιο. Καίγεται ομοιόμορφα, δεν αφήνει καπνό και η μυρωδιά γεμίζει όλο τον χώρο. Ξαναπαράγγελλα 3 φορές!</p>
+      <div class="review-author">Ελένη Κ.</div>
+      <div class="review-date">Ιανουάριος 2025</div>
+    </div>
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Η συσκευασία είναι τόσο όμορφη που δεν χρειάστηκε ούτε χαρτί δώρου. Άμεση αποστολή, εξαιρετική ποιότητα και μοναδικά αρώματα. Θα συνεχίσω να παραγγέλνω!</p>
+      <div class="review-author">Δήμητρα Σ.</div>
+      <div class="review-date">Μάρτιος 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div>
+    <h2>Μύρισε <em>πριν</em> αποφασίσεις.<br>Δες τα sample packs.</h2>
+    <p>Εγγράψου στο newsletter και λάβε 10% έκπτωση στην πρώτη σου παραγγελία — συν ειδικές προσφορές κάθε εβδομάδα.</p>
+  </div>
+  <div>
+    <form class="cta-form" onsubmit="handleSubscribe(event)">
+      <input type="email" class="cta-input" placeholder="το email σου...">
+      <button type="submit" class="cta-submit">Εγγραφή</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <span class="footer-brand">Lumi <span>Candles</span></span>
+      <p class="footer-about">Χειροποίητα κεράκια σόγιας από την Αθήνα, με αγάπη για το περιβάλλον και πάθος για το άρωμα. Κάθε κεράκι είναι μοναδικό — όπως και εσύ.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Συλλογές</h5>
+      <ul>
+        <li><a href="#">Κεράκια σε Βάζα</a></li>
+        <li><a href="#">Μελτ Ανθοδέσμες</a></li>
+        <li><a href="#">Gift Sets</a></li>
+        <li><a href="#">Νέες Αφίξεις</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Εταιρεία</h5>
+      <ul>
+        <li><a href="#">Σχετικά με εμάς</a></li>
+        <li><a href="#">Η Ιστορία μας</a></li>
+        <li><a href="#">Βιωσιμότητα</a></li>
+        <li><a href="#">Επικοινωνία</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Υποστήριξη</h5>
+      <ul>
+        <li><a href="#">Αποστολές</a></li>
+        <li><a href="#">Επιστροφές</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Φροντίδα Κεριού</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Lumi Candles. All rights reserved.</span>
+    <div class="social-links">
+      <a href="#">ig</a>
+      <a href="#">fb</a>
+      <a href="#">tt</a>
+      <a href="#">✉</a>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">🛒 Προστέθηκε στο καλάθι!</div>
+
+<script>
+  // Filter products
+  function filterProducts(type, btn) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.product-card').forEach(card => {
+      if (type === 'all' || card.dataset.type === type) {
+        card.style.display = '';
+        card.style.animation = 'fadeUp 0.4s ease both';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Add to cart toast
+  function addToCart(name) {
+    const toast = document.getElementById('toast');
+    toast.textContent = '🛒 "' + name + '" προστέθηκε!';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2800);
+  }
+
+  // Newsletter
+  function handleSubscribe(e) {
+    e.preventDefault();
+    const inp = e.target.querySelector('input');
+    if (inp.value) {
+      const toast = document.getElementById('toast');
+      toast.textContent = '✨ Εγγραφή επιτυχής! −10% στο email σου';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+      inp.value = '';
+    }
+  }
+
+  // Smooth nav active state
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id]');
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 200) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--espresso)' : '';
+    });
+  });
+</script>
+</body>
+</html>
